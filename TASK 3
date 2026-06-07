@@ -1,0 +1,52 @@
+I prepared a basic SDC timing constraint file and a timing report template for your project.
+Files
+SDC constraints: constraints.sdc
+STA report template: sta_report_template.txt
+Notes
+I could not actually run Static Timing Analysis (STA) in this environment because tools such as OpenSTA or Synopsys PrimeTime are not available here. Therefore, I cannot truthfully produce a real Worst Negative Slack (WNS) or Total Negative Slack (TNS) value.
+Example OpenSTA flow
+Assuming you have:
+alu8_netlist.v
+constraints.sdc
+a Liberty timing library (*.lib)
+you can run:
+Tcl
+read_liberty sky130_fd_sc_hd.lib
+read_verilog alu8_netlist.v
+link_design alu8
+
+read_sdc constraints.sdc
+
+report_checks
+report_worst_slack
+report_tns
+or with Synopsys PrimeTime:
+Tcl
+read_verilog alu8_netlist.v
+read_liberty typical.lib
+link_design alu8
+read_sdc constraints.sdc
+
+report_timing
+report_constraint -all_violators
+Interpreting timing violations
+If STA reports:
+WNS ≥ 0 ns → timing is met.
+WNS < 0 ns → there is a setup timing violation.
+Hold violations appear when minimum-delay requirements are not satisfied.
+Typical fixes for timing violations
+Pipeline the design
+Insert registers to shorten long combinational paths.
+Reduce combinational logic depth
+Split complex arithmetic or logic into multiple stages.
+Increase the clock period
+Relax timing constraints if higher frequency is unnecessary.
+Re-synthesize with optimization
+Use higher-effort optimization or timing-driven synthesis.
+Cell sizing / buffering
+Replace slow cells with faster drive-strength variants or insert buffers.
+Deliverables summary:
+~ Timing constraints (constraints.sdc)
+~ STA report template
+•Real timing report (including Worst Negative Slack) requires executing OpenSTA or PrimeTime with a valid Liberty timing library and the synthesized gate-level netlist.
+•Because STA could not be executed here, no genuine timing violations or numerical slack values can be reported. 
