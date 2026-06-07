@@ -1,0 +1,32 @@
+I have prepared a simple synthesizable 8-bit ALU in SystemVerilog along with a testbench that includes:
+ Directed tests for all ALU operations
+ Randomized testing (200 random vectors)
+ Automatic result checking against a reference model
+Files
+alu8.sv – RTL source for the 8-bit ALU
+tb_alu8.sv – Comprehensive testbench
+README.txt – Short coverage and usage summary
+ALU Operations Implemented
+Opcode
+Operation
+000
+Addition
+001
+Subtraction
+010
+Bitwise AND
+011
+Bitwise OR
+100
+Bitwise XOR
+101
+Bitwise NOT (~A)
+110
+Left Shift (A << 1)
+111
+Right Shift (A >> 1)
+Coverage Explanation
+Directed tests: Explicitly verify each supported ALU operation with known inputs.
+Random tests: 200 random combinations of operands and opcodes are generated and compared against expected results computed inside the testbench.
+Pass criterion: Any mismatch causes the simulation to report an error ($fatal); otherwise, it prints All directed and random tests passed.
+ 
