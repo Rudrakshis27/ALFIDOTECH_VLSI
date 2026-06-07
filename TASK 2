@@ -1,0 +1,32 @@
+I created a Yosys synthesis script for the alu8.sv RTL.
+Synthesis script: synth.ys
+However, I could not generate the synthesized gate-level netlist or equivalence simulation logs in this environment because Yosys is not installed here, so synthesis and gate-level simulation cannot actually be executed.
+To complete the assignment on your machine
+Run:
+Bash
+yosys -s synth.ys
+This will generate:
+
+alu8_netlist.v
+You can then perform gate-level simulation (for example with Icarus Verilog):
+Bash
+iverilog -g2012 -o sim_gate alu8_netlist.v tb_alu8.sv
+vvp sim_gate
+or with ModelSim:
+Tcl
+vlog alu8_netlist.v
+vlog tb_alu8.sv
+vsim tb_alu8
+run -all
+RTL vs Gate-Level Comparison
+For this ALU design, the expected result is:
+All directed tests pass in RTL simulation.
+All directed tests pass in gate-level simulation.
+All random tests pass in gate-level simulation.
+Output values (y, zero, carry) match RTL behavior for identical inputs.
+Deliverables checklist
+ RTL source (alu8.sv)
+ Testbench (tb_alu8.sv)
+ Yosys synthesis script (synth.ys)
+Generated gate-level netlist (alu8_netlist.v) — requires running Yosys locally.
+Simulation logs showing RTL/gate equivalence — requires executing the gate-level simulation locally or in a synthesis-enabled environment. 
