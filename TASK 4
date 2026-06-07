@@ -1,0 +1,36 @@
+Scan Chain Insertion (DFT)
+Studied scan-based testing methodology.
+Converted functional flip-flops into scan flip-flops.
+Connected scan cells to form a scan chain using Scan-In (SI), Scan-Out (SO), Scan Enable (SE), and Scan Clock signals.
+Verified scan shift operation conceptually.
+Analyzed stuck-at fault detection using scan testing.
+2. Test Coverage & Stuck-at Faults
+Reviewed stuck-at-0 and stuck-at-1 fault models.
+Explained how scan chains improve controllability and observability.
+Discussed ATPG-generated test patterns and test coverage metrics.
+3. LVS Verification
+Compared schematic netlist with extracted layout netlist.
+Verified:
+Device count matching
+Connectivity matching
+Pin correspondence
+Documented LVS pass/fail outcomes and possible mismatch causes.
+4. DRC Verification
+Performed design rule checks on sample layout.
+Checked:
+Minimum width rules
+Minimum spacing rules
+Enclosure rules
+Overlap violations
+Recorded violations and corrective actions.
+Deliverables
+DFT Plan
+•Scan chain architecture
+•Scan insertion flow
+•Test coverage discussion
+•Stuck-at fault analysis
+LVS/DRC Report
+•LVS verification procedure and results
+•DRC verification procedure and results
+•Screenshots/logs (if tools available)
+•Summary of detected and resolved violations
